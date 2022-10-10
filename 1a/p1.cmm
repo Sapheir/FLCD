@@ -1,0 +1,15 @@
+//compute the maximum of 3 numbers
+int a, b, c;
+
+scan(a);
+scan(b);
+scan(c);
+
+int max = a;
+if (b > max) {
+    max = b;
+};
+if (c > max) {
+    max = c;
+};
+print(max);

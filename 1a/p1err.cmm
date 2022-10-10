@@ -1,0 +1,14 @@
+int a, b, c;
+
+scan(a);
+scan(b);
+scan(c);
+
+max = a; // missing type keyword
+if (b >> max) { // invalid operator
+    max = b;
+};
+if (c > max) {
+    max = c;
+};
+print(max);

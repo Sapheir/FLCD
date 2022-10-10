@@ -1,0 +1,11 @@
+//compute the sum of n numbers
+
+int n, i = 0, s = 0;
+scan(n);
+while (i < n) {
+	int a;
+    scan(a);
+	s = s + a;
+	i = i + 1;
+};
+print(s);
