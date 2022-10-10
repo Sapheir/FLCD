@@ -1,0 +1,29 @@
+program ::= {statement}
+
+statement ::= (int_statement|string_statement|unsigned_int_statement|assign_statement|if_statement|while_statement|return_statement|function_call_statement) ";"
+
+int_statement ::= "int" identifier_list
+string_statement ::= "string" identifier_list
+unsigned_int_statement ::= "unsigned" "int" identifier_list
+assign_statement ::= identifier "=" expression
+if_statement ::= "if" "(" condition ")" "{" {statement} "}" ["else" "{" {statement} "}"]
+
+while_statement ::= "while" "(" condition ")" "{" {statement} "}"
+return_statement ::= "return" expression
+function_call_statement ::= function_name "(" expression_list? ")"
+
+identifier_list ::= identifier ["=" expression] {"," identifier ["=" expression]}
+
+expression ::= int_expression | unsigned_expression | string_expression
+int_expression ::= int_constant | identifier | 
+                   int_expression ("+"|"-"|"*"|"/") int_expression |
+                   "(" int_expression ("+"|"-"|"*"|"/") int_expression ")"   
+unsigned_expression ::= unsigned_constant | identifier | 
+                   unsigned_expression ("+"|"-"|"*"|"/") unsigned_expression |
+                   "(" unsigned_expression ("+"|"-"|"*"|"/") unsigned_expression ")" 
+string_expression ::= string_constant | identifier | string_expression + string_expression
+expression_list ::= expression{"," expression}
+
+condition ::= expression ("=="|"<"|"<="|">"|">=") expression
+
+function_name ::= "print" | "scan"
