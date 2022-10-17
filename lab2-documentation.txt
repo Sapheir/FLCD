@@ -1,0 +1,13 @@
+https://github.com/sapheir/flcd
+I implemented the hash table data structure with chaining which will be used by the symbol table:
+ - keys are the hashed versions of keywords
+ - hash is computed as the hash code of the keyword string modulo size of the hash table
+ - values for a key are lists containing the keywords with the corresponding hash value (used in case of collision)
+
+The position retrieved when searching for a keyword using the getPosition method is a Pair containing as the first value the hashed value (index in the outer list) and as the second value the index in the inner list
+
+The add method inserts the keyword in the Symbol Table and returns a boolean which shows if the keyword was inserted in the Symbol Table or if it already existed
+
+The contains method returns a boolean which shows if a keyword exists in the Symbol Table or not
+
+The remove method removes a keyword from the Symbol Table and returns a boolean which shows if the keyword was removed or if it didn't exist
