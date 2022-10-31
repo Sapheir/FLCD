@@ -3,6 +3,7 @@ int a, b, c;
 scan(a);
 scan(b);
 scan(c);
+string x = "1; // string not closed
 
 max = a; // missing type keyword
 if (b >> max) { // invalid operator
