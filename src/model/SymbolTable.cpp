@@ -50,8 +50,8 @@ bool SymbolTable::removeStringConstant(const std::string &constantString) {
 
 std::string SymbolTable::toString() {
     std::string stringSymbolTable;
-    stringSymbolTable += "Identifiers: \n" + identifierHashTable.toString();
-    stringSymbolTable += "Int constants: \n" + intConstantsHashTable.toString();
-    stringSymbolTable += "String constants: \n" + stringConstantsHashTable.toString();
+    stringSymbolTable += "\nIdentifiers: \n" + identifierHashTable.toString();
+    stringSymbolTable += "\nInt constants: \n" + intConstantsHashTable.toString();
+    stringSymbolTable += "\nString constants: \n" + stringConstantsHashTable.toString();
     return stringSymbolTable;
 }

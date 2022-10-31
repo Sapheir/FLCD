@@ -72,7 +72,7 @@ void HashTable::resize() {
 }
 
 std::string HashTable::toString() {
-    std::string stringHashTable;
+    std::string stringHashTable = "Hash table:\n";
     for (int i = 0; i<this->size; i++) {
         for (const auto &value: items[i]) {
             stringHashTable += std::to_string(i) + ": " + value + "\n";
