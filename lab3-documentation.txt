@@ -1,0 +1,4 @@
+My Scanner uses regex to match the different type of content from the source code: int constants, string constants, identifiers, predefined tokens
+Comments and whitespaces are skipped by the scanner
+There are also regex strings used to find lexical errors, especially for predefined tokens and strings
+Int constants, string constants and identifiers that are found by the Scanner are added to their respective hash tables from the Symbol Table and also added to the PIF
