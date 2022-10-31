@@ -40,13 +40,13 @@ bool Scanner::stringConstant() {
     strConstantRegex = std::regex{"^\"[^\"]+\""};
     regexIt = std::sregex_iterator(indexSubstr.begin(), indexSubstr.end(), strConstantRegex);
     if (regexIt != std::sregex_iterator()) {
-        throw std::runtime_error("Lexical error: Invalid characters inside string on line " + std::to_string(currentLine));
+        throw std::runtime_error("Lexical error: Invalid characters inside string on line " + std::to_string(currentLine) + " and token " + regexIt->str());
     }
 
     strConstantRegex = std::regex{"^\""};
     regexIt = std::sregex_iterator(indexSubstr.begin(), indexSubstr.end(), strConstantRegex);
     if (regexIt != std::sregex_iterator()) {
-        throw std::runtime_error("Lexical error: String not closed on line " + std::to_string(currentLine));
+        throw std::runtime_error("Lexical error: String not closed on line " + std::to_string(currentLine) + " and token " + regexIt->str());
     }
     return false;
 }
@@ -106,7 +106,7 @@ void Scanner::nextToken() {
         return;
     if (tokenFromList() || identifier() || stringConstant() || intConstant())
         return;
-    throw std::runtime_error("Lexical error: Cannot classify token on line " + std::to_string(currentLine));
+    throw std::runtime_error("Lexical error: Cannot classify token on line " + std::to_string(currentLine) + ": " + program[index]);
 }
 
 void Scanner::scan() {
