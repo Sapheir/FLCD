@@ -53,4 +53,8 @@ public:
      */
     std::pair<int, int> getPosition(const std::string &keyword);
 
+    /**
+     * Returns a string representation of the hash table
+     */
+    std::string toString();
 };

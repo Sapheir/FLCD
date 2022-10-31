@@ -7,5 +7,6 @@ include_directories(src)
 
 add_executable(FLCD
         src/main.cpp
-        src/data_structures/HashTable.cpp
-        src/data_structures/HashTable.h)
+        src/data_structures/HashTable.h src/data_structures/HashTable.cpp
+        src/model/SymbolTable.h src/model/SymbolTable.cpp
+        src/model/Scanner.h src/model/Scanner.cpp)

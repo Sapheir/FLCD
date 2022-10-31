@@ -2,7 +2,7 @@
 #include "data_structures/HashTable.h"
 
 HashTable::HashTable() {
-    this->size = 10;
+    this->size = 109;
     items.resize(this->size);
 }
 
@@ -69,4 +69,14 @@ void HashTable::resize() {
             this->add(value);
         }
     }
+}
+
+std::string HashTable::toString() {
+    std::string stringHashTable;
+    for (int i = 0; i<this->size; i++) {
+        for (const auto &value: items[i]) {
+            stringHashTable += std::to_string(i) + ": " + value + "\n";
+        }
+    }
+    return stringHashTable;
 }
