@@ -1,0 +1,21 @@
+The automaton is read from the input file "fa.in" which contains the states, the alphabet, the initial state, the final states and the transitions.
+The method used for checking the provided word is checkAccepted() which returns a boolean value.
+The method starts in the initial state and for each letter in the word it checks if there is a transition from the current state to another state with the letter as label. If the final letter is not a final state (output state) or no such transition exists, the word is not accepted and the method returns false; Otherwise, return true.
+
+
+
+EBNF form of input file for FA:
+
+not_zero_digits = 1|2| .. |9
+digit = 0|1|..|9
+number = non_zero_digit{digit}
+letter = a|b|..|z|A|B..|Z
+character = letter | digit
+list_of_characters = {character} {"," character}
+first_line = "states" "=" "{" list_of_characters "}"
+second_line = "in_state" "=" {character}
+third_line = "out_states" "=" "{" list_of_characters "}"
+fourth_line = "alphabet" "=" "{" list_of_characters "}"
+triple = "(" {character} "," {character} "," {character} ")"
+fifth_line = "transitions" "=" "{" triple ";" triple} "}"
+input_file = first_line "\n" second_line "\n" third_line "\n" fourth_line "\n" fifth_line
