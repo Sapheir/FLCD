@@ -11,4 +11,6 @@ add_executable(FLCD
         src/model/SymbolTable.h src/model/SymbolTable.cpp
         src/model/Scanner.h src/model/Scanner.cpp
         src/model/Transition.h src/model/Transition.cpp
-        src/model/FiniteAutomaton.h src/model/FiniteAutomaton.cpp)
+        src/model/FiniteAutomaton.h src/model/FiniteAutomaton.cpp
+        src/model/Grammar.h src/model/Grammar.cpp
+        src/model/ProductionSet.h src/model/ProductionSet.cpp)
