@@ -25,6 +25,8 @@ Grammar::Grammar(const std::string &filename) {
         rhs.erase(std::remove(rhs.begin(), rhs.end(), "epsilon"), rhs.end());
         productionSet.addProduction(lhs, rhs);
     }
+
+    isEnriched = false;
 }
 
 bool Grammar::checkCFG() {
@@ -40,7 +42,7 @@ bool Grammar::checkCFG() {
 }
 
 std::vector<std::string> Grammar::splitInput(std::string &input, const std::string &delimiter) {
-    size_t pos = 0;
+    size_t pos;
     std::string token;
     std::vector<std::string> split;
     while ((pos = input.find(delimiter)) != std::string::npos) {
@@ -77,4 +79,23 @@ ProductionSet Grammar::getProductionSet() {
     return productionSet;
 }
 
+Grammar::Grammar(std::vector<std::string> &nonTerminals, std::vector<std::string> &terminals,
+                 std::string &startingSymbol, ProductionSet &productionSet):
+                 nonTerminals{std::move(nonTerminals)}, terminals{std::move(terminals)}, startingSymbol{std::move(startingSymbol)}, productionSet{std::move(productionSet)}{
+    isEnriched = true;
+}
 
+Grammar Grammar::getEnrichedGrammar() {
+    if (isEnriched) {
+        return *this;
+    }
+    std::vector<std::string> newNonTerminals = nonTerminals;
+    newNonTerminals.push_back(getEnrichedGrammarStartingSymbol());
+    Grammar newGrammar{newNonTerminals, terminals, startingSymbol, productionSet};
+    newGrammar.productionSet.addProduction({getEnrichedGrammarStartingSymbol()}, {startingSymbol});
+    return newGrammar;
+}
+
+std::string getEnrichedGrammarStartingSymbol() {
+    return "S0";
+}

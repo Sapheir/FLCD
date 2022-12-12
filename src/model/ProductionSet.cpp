@@ -32,7 +32,15 @@ std::string ProductionSet::toString() {
     return s;
 }
 
-std::string ProductionSet::getVectorString(const std::vector<std::string> &v) {
+std::vector<std::pair<std::string, std::vector<std::vector<std::string>>>> ProductionSet::getOrderedProductions() {
+    std::vector<std::pair<std::string, std::vector<std::vector<std::string>>>> orderedProductions;
+    for (const auto &it: productions) {
+        orderedProductions.emplace_back(it.first[0], it.second);
+    }
+    return orderedProductions;
+}
+
+std::string getVectorString(const std::vector<std::string> &v) {
     std::string s = "[";
     for (const auto &val: v)
         s += val + ",";
@@ -41,4 +49,8 @@ std::string ProductionSet::getVectorString(const std::vector<std::string> &v) {
     return s;
 }
 
-
+std::string getVectorString(const std::set<std::string> &s) {
+    std::vector<std::string> v;
+    std::copy(s.begin(), s.end(), std::back_inserter(v));
+    return getVectorString(v);
+}

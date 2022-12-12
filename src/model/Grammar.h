@@ -13,6 +13,7 @@ private:
     std::string startingSymbol;
     ProductionSet productionSet;
 
+    Grammar(std::vector<std::string> &nonTerminals, std::vector<std::string> &terminals, std::string &startingSymbol, ProductionSet &productionSet);
     static std::string getVectorString(const std::vector<std::string> &v);
     static std::vector<std::string> splitInput(std::string &input, const std::string &delimiter);
 
@@ -23,5 +24,10 @@ public:
     std::string getStartingSymbol();
     ProductionSet getProductionSet();
     bool checkCFG();
+    Grammar getEnrichedGrammar();
+
+    bool isEnriched;
 
 };
+
+std::string getEnrichedGrammarStartingSymbol();
